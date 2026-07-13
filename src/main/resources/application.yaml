@@ -1,0 +1,36 @@
+spring:
+  application:
+    name: CMS
+  cloud:
+    openfeign:
+      circuitbreaker:
+        enabled: true
+    compatibility-verifier:
+      enabled: false
+server:
+  port: 8087
+
+cors:
+  allowed-origins:
+    - "http://localhost:5173"
+    - "http://localhost:3000"
+    - "https://effective-chunk-unwound.ngrok-free.dev"
+    - "https://blah-hypnotist-tamper.ngrok-free.dev"
+    - "https://paralyses-subfloor-overdraft.ngrok-free.dev"
+    - "https://thinner-crudely-bunkmate.ngrok-free.dev"
+    - "https://garage-army-vivacious.ngrok-free.dev"
+
+aws:
+  accessKey: your_aws_access_key_here
+  secretKey: your_aws_secret_key_here
+  region: eu-north-1
+
+jwt:
+  secret: "eyJhbGciOiJIUzI1NiJ9.your_aws_secret_key_hereyour_aws_secret_key_hereyour_aws_secret_key_hereyour_aws_secret_key_hereyour_aws_secret_key_hereyour_aws_secret_key_hereMjR9.your_aws_secret_key_herez4o"
+
+version: 3
+agent:
+  authtoken: 3Eqe2JHsgsDOceYn9aV54G7O83Y_6YXwND7xtUptxx12XKwXg
+
+course-ms:
+  url: http://localhost:8088
