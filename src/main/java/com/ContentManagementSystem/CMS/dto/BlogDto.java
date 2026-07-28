@@ -16,4 +16,6 @@ public class BlogDto {
     private List<String> tags;
     private List<String> featured_images;
     private String status;
+    private String thumbnail;
+    private String trainer_id;
 }

@@ -36,6 +36,12 @@ public class Blog {
 
     @DynamoDBAttribute(attributeName = "status")
     private String status;
+
+    @DynamoDBAttribute(attributeName = "thumbnail")
+    private String thumbnail;
+
+    @DynamoDBAttribute(attributeName = "trainer_id")
+    private String trainer_id;
     @DynamoDBTypeConverted(converter = LocalDateTimeConverter.class)
     @DynamoDBAttribute(attributeName = "created_at")
     private LocalDateTime created_at;

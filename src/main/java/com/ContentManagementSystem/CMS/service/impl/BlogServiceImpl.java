@@ -44,15 +44,28 @@ public class BlogServiceImpl implements BlogService {
         }
         BlogDto blogDto = new BlogDto();
         BeanUtils.copyProperties(blog, blogDto);
+        // Fallback: use first featured_image as thumbnail if thumbnail is not set
+        if (blogDto.getThumbnail() == null &&
+                blog.getFeatured_images() != null &&
+                !blog.getFeatured_images().isEmpty()) {
+            blogDto.setThumbnail(blog.getFeatured_images().get(0));
+        }
         return blogDto;
     }
+
     @Override
     public List<BlogDto> getAllBlog() {
         List<Blog> blogs = blogRepository.findAll();
         List<BlogDto> blogDtoList = new ArrayList<>();
-        for(Blog blog : blogs) {
+        for (Blog blog : blogs) {
             BlogDto blogDto = new BlogDto();
             BeanUtils.copyProperties(blog, blogDto);
+            // Fallback: use first featured_image as thumbnail if thumbnail is not set
+            if (blogDto.getThumbnail() == null &&
+                    blog.getFeatured_images() != null &&
+                    !blog.getFeatured_images().isEmpty()) {
+                blogDto.setThumbnail(blog.getFeatured_images().get(0));
+            }
             blogDtoList.add(blogDto);
         }
         return blogDtoList;
@@ -70,6 +83,8 @@ public class BlogServiceImpl implements BlogService {
         existingBlog.setTags(blog.getTags());
         existingBlog.setFeatured_images(blog.getFeatured_images());
         existingBlog.setStatus(blog.getStatus());
+        existingBlog.setThumbnail(blog.getThumbnail());
+        existingBlog.setTrainer_id(blog.getTrainer_id());
         existingBlog.setUpdated_at(LocalDateTime.now());
         blogRepository.save(existingBlog);
         return "Blog Updated Successfully";

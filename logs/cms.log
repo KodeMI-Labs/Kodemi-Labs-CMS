@@ -1,0 +1,501 @@
+2026-07-21 20:25:56 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-21 20:25:56 [restartedMain] INFO  c.C.CMS.CmsApplication - Starting CmsApplication using Java 21.0.9 with PID 72735 (/Users/venkatkarthik/Downloads/CMS/CMS/target/classes started by venkatkarthik in /Users/venkatkarthik/Downloads/CMS/CMS)
+2026-07-21 20:25:56 [restartedMain] DEBUG c.C.CMS.CmsApplication - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-07-21 20:25:56 [restartedMain] INFO  c.C.CMS.CmsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-21 20:25:56 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-21 20:25:56 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-21 20:26:00 [restartedMain] DEBUG o.s.c.o.FeignClientsRegistrar$1 - Identified candidate component class: file [/Users/venkatkarthik/Downloads/CMS/CMS/target/classes/com/ContentManagementSystem/CMS/client/CourseServiceClient.class]
+2026-07-21 20:26:02 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=34412635-afa9-3aa1-88ee-41cea4c7790d
+2026-07-21 20:26:04 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8087 (http)
+2026-07-21 20:26:04 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8087"]
+2026-07-21 20:26:04 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-21 20:26:04 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-21 20:26:04 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-21 20:26:04 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 7546 ms
+2026-07-21 20:26:04 [restartedMain] DEBUG c.C.CMS.config.JwtFilter - Filter 'jwtFilter' configured for use
+2026-07-21 20:26:10 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: Banner
+2026-07-21 20:26:10 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: Blog
+2026-07-21 20:26:10 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: FAQ
+2026-07-21 20:26:10 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: Media
+2026-07-21 20:26:10 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: Notes
+2026-07-21 20:26:10 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: SEO
+2026-07-21 20:26:10 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: StaticPages
+2026-07-21 20:26:10 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: Quiz
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: QuizCategory
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: QuizQuestion
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: QuizOption
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: QuizAttempt
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: QuizAnswer
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table with GSI: CourseReview (course-id-index)
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: CourseReview
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: CourseRatingSummary
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: InstructorReview
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: InstructorRatingSummary
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: QuizAnalytics
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: QuizStudentResult
+2026-07-21 20:26:11 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - Created DynamoDB table: Testimonial
+2026-07-21 20:26:12 [restartedMain] DEBUG o.s.c.o.FeignClientFactoryBean - Creating a FeignClientFactoryBean.
+2026-07-21 20:26:12 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-21 20:26:15 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 2161bd85-8dde-400b-a514-5a92983bc680
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-21 20:26:15 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-21 20:26:16 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8087"]
+2026-07-21 20:26:16 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8087 (http) with context path '/'
+2026-07-21 20:26:17 [restartedMain] INFO  c.C.CMS.CmsApplication - Started CmsApplication in 27.045 seconds (process running for 31.88)
+2026-07-21 20:26:36 [http-nio-8087-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-21 20:26:36 [http-nio-8087-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-21 20:26:36 [http-nio-8087-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 4 ms
+2026-07-21 20:27:27 [http-nio-8087-exec-8] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [feign.RetryableException: Connection refused executing GET http://localhost:8088/courses/course-1784645846/exists]
+2026-07-21 20:32:05 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-21 20:32:05 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-21 20:33:44 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-21 20:33:44 [restartedMain] INFO  c.C.CMS.CmsApplication - Starting CmsApplication using Java 21.0.9 with PID 82465 (/Users/venkatkarthik/Downloads/CMS/CMS/target/classes started by venkatkarthik in /Users/venkatkarthik/Downloads/CMS/CMS)
+2026-07-21 20:33:44 [restartedMain] DEBUG c.C.CMS.CmsApplication - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-07-21 20:33:44 [restartedMain] INFO  c.C.CMS.CmsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-21 20:33:44 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-21 20:33:44 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-21 20:33:49 [restartedMain] DEBUG o.s.c.o.FeignClientsRegistrar$1 - Identified candidate component class: file [/Users/venkatkarthik/Downloads/CMS/CMS/target/classes/com/ContentManagementSystem/CMS/client/CourseServiceClient.class]
+2026-07-21 20:33:51 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=34412635-afa9-3aa1-88ee-41cea4c7790d
+2026-07-21 20:33:53 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8087 (http)
+2026-07-21 20:33:53 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8087"]
+2026-07-21 20:33:53 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-21 20:33:53 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-21 20:33:53 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-21 20:33:53 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 8712 ms
+2026-07-21 20:33:53 [restartedMain] DEBUG c.C.CMS.config.JwtFilter - Filter 'jwtFilter' configured for use
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Banner
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Blog
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: FAQ
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Media
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Notes
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: SEO
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: StaticPages
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Quiz
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizCategory
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizQuestion
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizOption
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAttempt
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnswer
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseReview
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - CourseReview GSI 'course-id-index' is present.
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseRatingSummary
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorReview
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorRatingSummary
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnalytics
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizStudentResult
+2026-07-21 20:33:56 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Testimonial
+2026-07-21 20:33:57 [restartedMain] DEBUG o.s.c.o.FeignClientFactoryBean - Creating a FeignClientFactoryBean.
+2026-07-21 20:33:57 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-21 20:33:59 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 25aeeeb8-b2e9-46eb-97a4-8c936cad5b7d
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-21 20:33:59 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-21 20:34:00 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8087"]
+2026-07-21 20:34:00 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8087 (http) with context path '/'
+2026-07-21 20:34:00 [restartedMain] INFO  c.C.CMS.CmsApplication - Started CmsApplication in 18.551 seconds (process running for 20.61)
+2026-07-21 20:34:44 [http-nio-8087-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-21 20:34:44 [http-nio-8087-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-21 20:34:44 [http-nio-8087-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 3 ms
+2026-07-21 20:34:50 [http-nio-8087-exec-2] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [feign.RetryableException: Connection refused executing GET http://localhost:8088/courses/COURSE-1784646286/exists]
+2026-07-21 20:35:32 [http-nio-8087-exec-5] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [feign.RetryableException: Connection refused executing GET http://localhost:8088/courses/COURSE-1784646329/exists]
+2026-07-21 20:35:33 [http-nio-8087-exec-6] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource course-revicurl.]
+2026-07-21 20:35:33 [http-nio-8087-exec-7] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [org.springframework.web.servlet.resource.NoResourceFoundException: No static resource course-revicurl.]
+2026-07-21 20:37:26 [http-nio-8087-exec-9] WARN  o.s.w.s.m.m.a.ExceptionHandlerExceptionResolver - Resolved [feign.RetryableException: Connection refused executing GET http://localhost:8088/courses/COURSE-TEST-1784646444/exists]
+2026-07-21 20:37:59 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-21 20:37:59 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-21 20:39:39 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-21 20:39:40 [restartedMain] INFO  c.C.CMS.CmsApplication - Starting CmsApplication using Java 21.0.9 with PID 6166 (/Users/venkatkarthik/Downloads/CMS/CMS/target/classes started by venkatkarthik in /Users/venkatkarthik/Downloads/CMS/CMS)
+2026-07-21 20:39:40 [restartedMain] DEBUG c.C.CMS.CmsApplication - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-07-21 20:39:40 [restartedMain] INFO  c.C.CMS.CmsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-21 20:39:40 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-21 20:39:40 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-21 20:39:41 [restartedMain] DEBUG o.s.c.o.FeignClientsRegistrar$1 - Identified candidate component class: file [/Users/venkatkarthik/Downloads/CMS/CMS/target/classes/com/ContentManagementSystem/CMS/client/CourseServiceClient.class]
+2026-07-21 20:39:42 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=152ceffe-012d-3eb2-9824-1b60b0b30d1d
+2026-07-21 20:39:43 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8087 (http)
+2026-07-21 20:39:43 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8087"]
+2026-07-21 20:39:43 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-21 20:39:43 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-21 20:39:43 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-21 20:39:43 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2970 ms
+2026-07-21 20:39:43 [restartedMain] DEBUG c.C.CMS.config.JwtFilter - Filter 'jwtFilter' configured for use
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Banner
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Blog
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: FAQ
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Media
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Notes
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: SEO
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: StaticPages
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Quiz
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizCategory
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizQuestion
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizOption
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAttempt
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnswer
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseReview
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - CourseReview GSI 'course-id-index' is present.
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseRatingSummary
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorReview
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorRatingSummary
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnalytics
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizStudentResult
+2026-07-21 20:39:44 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Testimonial
+2026-07-21 20:39:45 [restartedMain] DEBUG o.s.c.o.FeignClientFactoryBean - Creating a FeignClientFactoryBean.
+2026-07-21 20:39:45 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-21 20:39:46 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 576b22fb-cdce-4a64-b246-bbe42b2cd1aa
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-21 20:39:46 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-21 20:39:47 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8087"]
+2026-07-21 20:39:47 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8087 (http) with context path '/'
+2026-07-21 20:39:47 [restartedMain] INFO  c.C.CMS.CmsApplication - Started CmsApplication in 8.759 seconds (process running for 10.237)
+2026-07-21 20:40:26 [http-nio-8087-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-21 20:40:26 [http-nio-8087-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-21 20:40:26 [http-nio-8087-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 2 ms
+2026-07-21 20:40:31 [http-nio-8087-exec-2] WARN  c.C.C.c.CourseServiceClientFallback - Course MS is unreachable. Falling back: assuming course COURSE-1784646628N exists.
+2026-07-21 20:51:28 [SpringApplicationShutdownHook] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Commencing graceful shutdown. Waiting for active requests to complete
+2026-07-21 20:51:28 [tomcat-shutdown] INFO  o.s.b.w.e.tomcat.GracefulShutdown - Graceful shutdown complete
+2026-07-22 11:42:21 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-22 11:42:21 [restartedMain] INFO  c.C.CMS.CmsApplication - Starting CmsApplication using Java 25.0.1 with PID 4624 (C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes started by siddharth reddy in C:\Users\siddharth reddy\Downloads\hhh\CMS)
+2026-07-22 11:42:21 [restartedMain] DEBUG c.C.CMS.CmsApplication - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-07-22 11:42:21 [restartedMain] INFO  c.C.CMS.CmsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-22 11:42:21 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-22 11:42:21 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-22 11:42:22 [restartedMain] DEBUG o.s.c.o.FeignClientsRegistrar$1 - Identified candidate component class: file [C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes\com\ContentManagementSystem\CMS\client\CourseServiceClient.class]
+2026-07-22 11:42:22 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: java.lang.IllegalArgumentException: http://${course-ms.url} is malformed
+2026-07-22 11:42:22 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-07-22 11:42:22 [restartedMain] ERROR o.s.boot.SpringApplication - Application run failed
+java.lang.IllegalArgumentException: http://${course-ms.url} is malformed
+	at org.springframework.cloud.openfeign.FeignClientsRegistrar.getUrl(FeignClientsRegistrar.java:128)
+	at org.springframework.cloud.openfeign.FeignClientsRegistrar.getUrl(FeignClientsRegistrar.java:371)
+	at org.springframework.cloud.openfeign.FeignClientsRegistrar.eagerlyRegisterFeignClientBeanDefinition(FeignClientsRegistrar.java:227)
+	at org.springframework.cloud.openfeign.FeignClientsRegistrar.registerFeignClient(FeignClientsRegistrar.java:216)
+	at org.springframework.cloud.openfeign.FeignClientsRegistrar.registerFeignClients(FeignClientsRegistrar.java:205)
+	at org.springframework.cloud.openfeign.FeignClientsRegistrar.registerBeanDefinitions(FeignClientsRegistrar.java:155)
+	at org.springframework.context.annotation.ImportBeanDefinitionRegistrar.registerBeanDefinitions(ImportBeanDefinitionRegistrar.java:86)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.lambda$loadBeanDefinitionsFromRegistrars$1(ConfigurationClassBeanDefinitionReader.java:409)
+	at java.base/java.util.LinkedHashMap.forEach(LinkedHashMap.java:987)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsFromRegistrars(ConfigurationClassBeanDefinitionReader.java:408)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitionsForConfigurationClass(ConfigurationClassBeanDefinitionReader.java:148)
+	at org.springframework.context.annotation.ConfigurationClassBeanDefinitionReader.loadBeanDefinitions(ConfigurationClassBeanDefinitionReader.java:120)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.processConfigBeanDefinitions(ConfigurationClassPostProcessor.java:430)
+	at org.springframework.context.annotation.ConfigurationClassPostProcessor.postProcessBeanDefinitionRegistry(ConfigurationClassPostProcessor.java:290)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanDefinitionRegistryPostProcessors(PostProcessorRegistrationDelegate.java:349)
+	at org.springframework.context.support.PostProcessorRegistrationDelegate.invokeBeanFactoryPostProcessors(PostProcessorRegistrationDelegate.java:118)
+	at org.springframework.context.support.AbstractApplicationContext.invokeBeanFactoryPostProcessors(AbstractApplicationContext.java:792)
+	at org.springframework.context.support.AbstractApplicationContext.refresh(AbstractApplicationContext.java:610)
+	at org.springframework.boot.web.servlet.context.ServletWebServerApplicationContext.refresh(ServletWebServerApplicationContext.java:146)
+	at org.springframework.boot.SpringApplication.refresh(SpringApplication.java:752)
+	at org.springframework.boot.SpringApplication.refreshContext(SpringApplication.java:439)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:318)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1361)
+	at org.springframework.boot.SpringApplication.run(SpringApplication.java:1350)
+	at com.ContentManagementSystem.CMS.CmsApplication.main(CmsApplication.java:11)
+	at java.base/jdk.internal.reflect.DirectMethodHandleAccessor.invoke(DirectMethodHandleAccessor.java:104)
+	at java.base/java.lang.reflect.Method.invoke(Method.java:565)
+	at org.springframework.boot.devtools.restart.RestartLauncher.run(RestartLauncher.java:50)
+Caused by: java.net.MalformedURLException: Illegal character found in host: '{'
+	at java.base/java.net.URL.<init>(URL.java:769)
+	at java.base/java.net.URL.<init>(URL.java:630)
+	at java.base/java.net.URL.<init>(URL.java:566)
+	at org.springframework.cloud.openfeign.FeignClientsRegistrar.getUrl(FeignClientsRegistrar.java:125)
+	... 27 common frames omitted
+Caused by: java.lang.IllegalArgumentException: Illegal character found in host: '{'
+	at java.base/java.net.URLStreamHandler.setURL(URLStreamHandler.java:528)
+	at java.base/java.net.URLStreamHandler.parseURL(URLStreamHandler.java:331)
+	at java.base/java.net.URL.<init>(URL.java:764)
+	... 30 common frames omitted
+2026-07-22 11:43:27 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-22 11:43:28 [restartedMain] INFO  c.C.CMS.CmsApplication - Starting CmsApplication using Java 25.0.1 with PID 10304 (C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes started by siddharth reddy in C:\Users\siddharth reddy\Downloads\hhh\CMS)
+2026-07-22 11:43:28 [restartedMain] DEBUG c.C.CMS.CmsApplication - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-07-22 11:43:28 [restartedMain] INFO  c.C.CMS.CmsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-22 11:43:28 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-22 11:43:28 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-22 11:43:29 [restartedMain] DEBUG o.s.c.o.FeignClientsRegistrar$1 - Identified candidate component class: file [C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes\com\ContentManagementSystem\CMS\client\CourseServiceClient.class]
+2026-07-22 11:43:29 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=c2a6fa8e-5d48-3dd3-b214-296590fb2066
+2026-07-22 11:43:30 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8087 (http)
+2026-07-22 11:43:30 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8087"]
+2026-07-22 11:43:30 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-22 11:43:30 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-22 11:43:30 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-22 11:43:30 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2479 ms
+2026-07-22 11:43:30 [restartedMain] DEBUG c.C.CMS.config.JwtFilter - Filter 'jwtFilter' configured for use
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Banner
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Blog
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: FAQ
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Media
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Notes
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: SEO
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: StaticPages
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Quiz
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizCategory
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizQuestion
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizOption
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAttempt
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnswer
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseReview
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - CourseReview GSI 'course-id-index' is present.
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseRatingSummary
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorReview
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorRatingSummary
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnalytics
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizStudentResult
+2026-07-22 11:43:32 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Testimonial
+2026-07-22 11:43:32 [restartedMain] DEBUG o.s.c.o.FeignClientFactoryBean - Creating a FeignClientFactoryBean.
+2026-07-22 11:43:32 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-22 11:43:33 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: e50b632b-c6a3-4618-a3b9-28e737cb0e91
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-22 11:43:33 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-22 11:43:34 [restartedMain] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-07-22 11:43:34 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8087"]
+2026-07-22 11:43:34 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8087 (http) with context path '/'
+2026-07-22 11:43:35 [restartedMain] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-07-22 11:43:35 [restartedMain] INFO  c.C.CMS.CmsApplication - Started CmsApplication in 10.029 seconds (process running for 11.143)
+2026-07-22 11:57:45 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-22 11:57:45 [restartedMain] INFO  c.C.CMS.CmsApplication - Starting CmsApplication using Java 25.0.1 with PID 15420 (C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes started by siddharth reddy in C:\Users\siddharth reddy\Downloads\hhh\CMS)
+2026-07-22 11:57:45 [restartedMain] DEBUG c.C.CMS.CmsApplication - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-07-22 11:57:45 [restartedMain] INFO  c.C.CMS.CmsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-22 11:57:45 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-22 11:57:45 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-22 11:57:46 [restartedMain] DEBUG o.s.c.o.FeignClientsRegistrar$1 - Identified candidate component class: file [C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes\com\ContentManagementSystem\CMS\client\CourseServiceClient.class]
+2026-07-22 11:57:47 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=c2a6fa8e-5d48-3dd3-b214-296590fb2066
+2026-07-22 11:57:47 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8087 (http)
+2026-07-22 11:57:47 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8087"]
+2026-07-22 11:57:47 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-22 11:57:47 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-22 11:57:48 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-22 11:57:48 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2275 ms
+2026-07-22 11:57:48 [restartedMain] DEBUG c.C.CMS.config.JwtFilter - Filter 'jwtFilter' configured for use
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Banner
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Blog
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: FAQ
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Media
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Notes
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: SEO
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: StaticPages
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Quiz
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizCategory
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizQuestion
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizOption
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAttempt
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnswer
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseReview
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - CourseReview GSI 'course-id-index' is present.
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseRatingSummary
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorReview
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorRatingSummary
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnalytics
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizStudentResult
+2026-07-22 11:57:50 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Testimonial
+2026-07-22 11:57:50 [restartedMain] DEBUG o.s.c.o.FeignClientFactoryBean - Creating a FeignClientFactoryBean.
+2026-07-22 11:57:50 [restartedMain] WARN  o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+2026-07-22 11:57:50 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: a154fcda-13bd-4f3d-b70a-89970714c673
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-22 11:57:50 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-22 11:57:52 [restartedMain] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-07-22 11:57:52 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8087"]
+2026-07-22 11:57:52 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-07-22 11:57:52 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-07-22 11:57:52 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8087 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8087 or configure this application to listen on another port.
+
+2026-07-22 11:59:48 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-22 11:59:48 [restartedMain] INFO  c.C.CMS.CmsApplication - Starting CmsApplication using Java 25.0.1 with PID 26392 (C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes started by siddharth reddy in C:\Users\siddharth reddy\Downloads\hhh\CMS)
+2026-07-22 11:59:48 [restartedMain] DEBUG c.C.CMS.CmsApplication - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-07-22 11:59:48 [restartedMain] INFO  c.C.CMS.CmsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-22 11:59:48 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-22 11:59:48 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-22 11:59:49 [restartedMain] DEBUG o.s.c.o.FeignClientsRegistrar$1 - Identified candidate component class: file [C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes\com\ContentManagementSystem\CMS\client\CourseServiceClient.class]
+2026-07-22 11:59:50 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=c2a6fa8e-5d48-3dd3-b214-296590fb2066
+2026-07-22 11:59:51 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8087 (http)
+2026-07-22 11:59:51 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8087"]
+2026-07-22 11:59:51 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-22 11:59:51 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-22 11:59:51 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-22 11:59:51 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 2398 ms
+2026-07-22 11:59:51 [restartedMain] DEBUG c.C.CMS.config.JwtFilter - Filter 'jwtFilter' configured for use
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Banner
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Blog
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: FAQ
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Media
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Notes
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: SEO
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: StaticPages
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Quiz
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizCategory
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizQuestion
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizOption
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAttempt
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnswer
+2026-07-22 11:59:52 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseReview
+2026-07-22 11:59:53 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - CourseReview GSI 'course-id-index' is present.
+2026-07-22 11:59:53 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseRatingSummary
+2026-07-22 11:59:53 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorReview
+2026-07-22 11:59:53 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorRatingSummary
+2026-07-22 11:59:53 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnalytics
+2026-07-22 11:59:53 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizStudentResult
+2026-07-22 11:59:53 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Testimonial
+2026-07-22 11:59:53 [restartedMain] DEBUG o.s.c.o.FeignClientFactoryBean - Creating a FeignClientFactoryBean.
+2026-07-22 11:59:53 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-22 11:59:54 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 0feaad4e-4e48-4230-b7a3-c08faf597030
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-22 11:59:54 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-22 11:59:55 [restartedMain] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-07-22 11:59:55 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8087"]
+2026-07-22 11:59:55 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8087 (http) with context path '/'
+2026-07-22 11:59:56 [restartedMain] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-07-22 11:59:56 [restartedMain] INFO  c.C.CMS.CmsApplication - Started CmsApplication in 10.121 seconds (process running for 11.847)
+2026-07-22 12:01:01 [http-nio-8087-exec-1] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring DispatcherServlet 'dispatcherServlet'
+2026-07-22 12:01:01 [http-nio-8087-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Initializing Servlet 'dispatcherServlet'
+2026-07-22 12:01:01 [http-nio-8087-exec-1] INFO  o.s.web.servlet.DispatcherServlet - Completed initialization in 1 ms
+2026-07-22 13:57:14 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-22 13:57:15 [restartedMain] INFO  c.C.CMS.CmsApplication - Starting CmsApplication using Java 25.0.1 with PID 11012 (C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes started by siddharth reddy in C:\Users\siddharth reddy\Downloads\hhh\CMS)
+2026-07-22 13:57:15 [restartedMain] DEBUG c.C.CMS.CmsApplication - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-07-22 13:57:15 [restartedMain] INFO  c.C.CMS.CmsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-22 13:57:15 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-22 13:57:15 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-22 13:57:16 [restartedMain] DEBUG o.s.c.o.FeignClientsRegistrar$1 - Identified candidate component class: file [C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes\com\ContentManagementSystem\CMS\client\CourseServiceClient.class]
+2026-07-22 13:57:18 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=c2a6fa8e-5d48-3dd3-b214-296590fb2066
+2026-07-22 13:57:19 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8087 (http)
+2026-07-22 13:57:19 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8087"]
+2026-07-22 13:57:19 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-22 13:57:19 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-22 13:57:19 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-22 13:57:19 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 4199 ms
+2026-07-22 13:57:19 [restartedMain] DEBUG c.C.CMS.config.JwtFilter - Filter 'jwtFilter' configured for use
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Banner
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Blog
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: FAQ
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Media
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Notes
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: SEO
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: StaticPages
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Quiz
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizCategory
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizQuestion
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizOption
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAttempt
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnswer
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseReview
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - CourseReview GSI 'course-id-index' is present.
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseRatingSummary
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorReview
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorRatingSummary
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnalytics
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizStudentResult
+2026-07-22 13:57:23 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Testimonial
+2026-07-22 13:57:24 [restartedMain] DEBUG o.s.c.o.FeignClientFactoryBean - Creating a FeignClientFactoryBean.
+2026-07-22 13:57:24 [restartedMain] WARN  o.s.b.d.a.OptionalLiveReloadServer - Unable to start LiveReload server
+2026-07-22 13:57:25 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 171dec90-03a8-4993-b740-15206c700895
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-22 13:57:25 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-22 13:57:27 [restartedMain] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-07-22 13:57:27 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8087"]
+2026-07-22 13:57:27 [restartedMain] WARN  o.s.b.w.s.c.AnnotationConfigServletWebServerApplicationContext - Exception encountered during context initialization - cancelling refresh attempt: org.springframework.context.ApplicationContextException: Failed to start bean 'webServerStartStop'
+2026-07-22 13:57:27 [restartedMain] INFO  o.s.b.a.l.ConditionEvaluationReportLogger - 
+
+Error starting ApplicationContext. To display the condition evaluation report re-run your application with 'debug' enabled.
+2026-07-22 13:57:27 [restartedMain] ERROR o.s.b.d.LoggingFailureAnalysisReporter - 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Web server failed to start. Port 8087 was already in use.
+
+Action:
+
+Identify and stop the process that's listening on port 8087 or configure this application to listen on another port.
+
+2026-07-22 13:59:09 [background-preinit] INFO  o.h.validator.internal.util.Version - HV000001: Hibernate Validator 8.0.3.Final
+2026-07-22 13:59:09 [restartedMain] INFO  c.C.CMS.CmsApplication - Starting CmsApplication using Java 25.0.1 with PID 16288 (C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes started by siddharth reddy in C:\Users\siddharth reddy\Downloads\hhh\CMS)
+2026-07-22 13:59:09 [restartedMain] DEBUG c.C.CMS.CmsApplication - Running with Spring Boot v3.5.13, Spring v6.2.17
+2026-07-22 13:59:09 [restartedMain] INFO  c.C.CMS.CmsApplication - No active profile set, falling back to 1 default profile: "default"
+2026-07-22 13:59:09 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - Devtools property defaults active! Set 'spring.devtools.add-properties' to 'false' to disable
+2026-07-22 13:59:09 [restartedMain] INFO  o.s.b.d.e.DevToolsPropertyDefaultsPostProcessor - For additional web related logging consider setting the 'logging.level.web' property to 'DEBUG'
+2026-07-22 13:59:11 [restartedMain] DEBUG o.s.c.o.FeignClientsRegistrar$1 - Identified candidate component class: file [C:\Users\siddharth reddy\Downloads\hhh\CMS\target\classes\com\ContentManagementSystem\CMS\client\CourseServiceClient.class]
+2026-07-22 13:59:12 [restartedMain] INFO  o.s.cloud.context.scope.GenericScope - BeanFactory id=c2a6fa8e-5d48-3dd3-b214-296590fb2066
+2026-07-22 13:59:13 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat initialized with port 8087 (http)
+2026-07-22 13:59:13 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Initializing ProtocolHandler ["http-nio-8087"]
+2026-07-22 13:59:13 [restartedMain] INFO  o.a.catalina.core.StandardService - Starting service [Tomcat]
+2026-07-22 13:59:13 [restartedMain] INFO  o.a.catalina.core.StandardEngine - Starting Servlet engine: [Apache Tomcat/10.1.53]
+2026-07-22 13:59:13 [restartedMain] INFO  o.a.c.c.C.[Tomcat].[localhost].[/] - Initializing Spring embedded WebApplicationContext
+2026-07-22 13:59:13 [restartedMain] INFO  o.s.b.w.s.c.ServletWebServerApplicationContext - Root WebApplicationContext: initialization completed in 3720 ms
+2026-07-22 13:59:13 [restartedMain] DEBUG c.C.CMS.config.JwtFilter - Filter 'jwtFilter' configured for use
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Banner
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Blog
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: FAQ
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Media
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Notes
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: SEO
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: StaticPages
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Quiz
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizCategory
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizQuestion
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizOption
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAttempt
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnswer
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseReview
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - CourseReview GSI 'course-id-index' is present.
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: CourseRatingSummary
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorReview
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: InstructorRatingSummary
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizAnalytics
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: QuizStudentResult
+2026-07-22 13:59:15 [restartedMain] INFO  c.C.C.c.DynamoDbTableInitializer - DynamoDB table already exists: Testimonial
+2026-07-22 13:59:16 [restartedMain] DEBUG o.s.c.o.FeignClientFactoryBean - Creating a FeignClientFactoryBean.
+2026-07-22 13:59:16 [restartedMain] INFO  o.s.b.d.a.OptionalLiveReloadServer - LiveReload server is running on port 35729
+2026-07-22 13:59:17 [restartedMain] WARN  o.s.b.a.s.s.UserDetailsServiceAutoConfiguration - 
+
+Using generated security password: 9002451b-8307-456a-8334-cba241911570
+
+This generated password is for development use only. Your security configuration must be updated before running your application in production.
+
+2026-07-22 13:59:17 [restartedMain] INFO  o.s.s.c.a.a.c.InitializeUserDetailsBeanManagerConfigurer$InitializeUserDetailsManagerConfigurer - Global AuthenticationManager configured with UserDetailsService bean with name inMemoryUserDetailsManager
+2026-07-22 13:59:18 [restartedMain] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-07-22 13:59:19 [restartedMain] INFO  o.a.coyote.http11.Http11NioProtocol - Starting ProtocolHandler ["http-nio-8087"]
+2026-07-22 13:59:19 [restartedMain] INFO  o.s.b.w.e.tomcat.TomcatWebServer - Tomcat started on port 8087 (http) with context path '/'
+2026-07-22 13:59:20 [restartedMain] INFO  o.s.cloud.commons.util.InetUtils - Cannot determine local hostname
+2026-07-22 13:59:20 [restartedMain] INFO  c.C.CMS.CmsApplication - Started CmsApplication in 13.306 seconds (process running for 14.906)

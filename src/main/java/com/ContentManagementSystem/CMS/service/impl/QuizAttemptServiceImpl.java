@@ -49,9 +49,27 @@ public class QuizAttemptServiceImpl implements QuizAttemptService {
     }
 
     private void autoCreateStudentResult(QuizAttempt attempt) {
+        if (attempt.getQuiz_id() == null) return;
+
         Quiz quiz = quizRepository.findById(attempt.getQuiz_id());
-        QuizStudentResult result = new QuizStudentResult();
-        result.setResult_id(UUID.randomUUID().toString());
+
+        // Upsert: reuse an existing result record for this learner+quiz if one exists,
+        // so we don't accumulate duplicate rows on every update.
+        QuizStudentResult result = null;
+        List<QuizStudentResult> allResults = quizStudentResultRepository.findAll();
+        for (QuizStudentResult r : allResults) {
+            if (attempt.getQuiz_id().equals(r.getQuiz_id())
+                    && attempt.getLearnerId() != null
+                    && attempt.getLearnerId().equals(r.getLearner_id())) {
+                result = r;
+                break;
+            }
+        }
+        if (result == null) {
+            result = new QuizStudentResult();
+            result.setResult_id(UUID.randomUUID().toString());
+        }
+
         result.setQuiz_id(attempt.getQuiz_id());
         result.setLearner_id(attempt.getLearnerId());
         // Use learner_name if provided, otherwise fall back to learnerId
@@ -68,7 +86,7 @@ public class QuizAttemptServiceImpl implements QuizAttemptService {
         result.setQuestions_attempted(attempt.getCorrectAnswers() != null && attempt.getWrongAnswers() != null
                 ? attempt.getCorrectAnswers() + attempt.getWrongAnswers() : 0);
         result.setTime_taken_minutes(attempt.getTimeSpentMinutes() != null ? attempt.getTimeSpentMinutes() : 0);
-        result.setStatus(attempt.getStatus() != null ? attempt.getStatus().name() : "COMPLETED");
+        result.setStatus(attempt.getStatus() != null ? attempt.getStatus().name() : "IN_PROGRESS");
         quizStudentResultRepository.save(result);
     }
 
@@ -158,26 +176,33 @@ public class QuizAttemptServiceImpl implements QuizAttemptService {
         quizAttempt.setStartedAt(LocalDateTime.now());
         quizAttemptRepository.save(quizAttempt);
         incrementQuizAttempts(quizAttempt.getQuiz_id());
-        // Auto-trigger analytics if attempt is already COMPLETED on create
-        if (AttemptStatus.COMPLETED.equals(quizAttempt.getStatus())) {
+        // Always create a student result record so queries return data immediately.
+        // Analytics only makes sense once the attempt is fully scored.
+        if (quizAttempt.getQuiz_id() != null) {
             autoCreateStudentResult(quizAttempt);
+        }
+        if (AttemptStatus.COMPLETED.equals(quizAttempt.getStatus())) {
             updateAnalyticsWithAttempt(quizAttempt.getQuiz_id(), quizAttempt);
         }
         return quizAttempt;
     }
 
     @Override
-    public String createQuizAttempt(QuizAttempt quizAttempt) {
+    public QuizAttemptDto createQuizAttempt(QuizAttempt quizAttempt) {
         quizAttempt.setAttempt_id(UUID.randomUUID().toString());
         quizAttempt.setStartedAt(LocalDateTime.now());
         quizAttemptRepository.save(quizAttempt);
         incrementQuizAttempts(quizAttempt.getQuiz_id());
-        // Auto-trigger analytics if attempt is already COMPLETED on create
-        if (AttemptStatus.COMPLETED.equals(quizAttempt.getStatus())) {
+        // Always create a student result record so queries return data immediately.
+        if (quizAttempt.getQuiz_id() != null) {
             autoCreateStudentResult(quizAttempt);
+        }
+        if (AttemptStatus.COMPLETED.equals(quizAttempt.getStatus())) {
             updateAnalyticsWithAttempt(quizAttempt.getQuiz_id(), quizAttempt);
         }
-        return "Quiz Attempt Created Successfully";
+        QuizAttemptDto quizAttemptDto = new QuizAttemptDto();
+        BeanUtils.copyProperties(quizAttempt, quizAttemptDto);
+        return quizAttemptDto;
     }
 
     @Override
@@ -241,6 +266,9 @@ public class QuizAttemptServiceImpl implements QuizAttemptService {
         existing.setStatus(quizAttempt.getStatus());
         existing.setSubmittedAt(quizAttempt.getSubmittedAt() != null ? quizAttempt.getSubmittedAt() : LocalDateTime.now());
         existing.setTimeSpentMinutes(quizAttempt.getTimeSpentMinutes());
+        if (quizAttempt.getLearnerId() != null && !quizAttempt.getLearnerId().isBlank()) {
+            existing.setLearnerId(quizAttempt.getLearnerId());
+        }
         if (quizAttempt.getLearner_name() != null && !quizAttempt.getLearner_name().isBlank()) {
             existing.setLearner_name(quizAttempt.getLearner_name());
         }
@@ -261,7 +289,7 @@ public class QuizAttemptServiceImpl implements QuizAttemptService {
             existing.setScore(correctAnswers);
         }
 
-        // wrongAnswers = totalQuestions - correctAnswers
+        // wrongAnswers = totalQuestions - correctAnswers 
         int wrongAnswers = quizAttempt.getWrongAnswers() != null
                 ? quizAttempt.getWrongAnswers()
                 : Math.max(0, totalQuestions - correctAnswers);
@@ -278,10 +306,82 @@ public class QuizAttemptServiceImpl implements QuizAttemptService {
         }
 
         quizAttemptRepository.save(existing);
-        if (AttemptStatus.COMPLETED.equals(existing.getStatus())) {
+        
+        // Always sync the student result with the latest attempt data
+        if (existing.getQuiz_id() != null) {
             autoCreateStudentResult(existing);
+        }
+        // Trigger analytics only when the attempt is completed
+        if (AttemptStatus.COMPLETED.equals(existing.getStatus())) {
             updateAnalyticsWithAttempt(existing.getQuiz_id(), existing);
         }
+        
+        QuizAttemptDto dto = new QuizAttemptDto();
+        BeanUtils.copyProperties(existing, dto);
+        return dto;
+    }
+
+    @Override
+    public QuizAttemptDto patchQuizAttempt(String attempt_id, QuizAttemptDto patchDto) {
+        QuizAttempt existing = quizAttemptRepository.findById(attempt_id);
+        if (existing == null) {
+            throw new ResourceNotFoundException("Quiz Attempt not found with id: " + attempt_id);
+        }
+
+        // Only update fields that are currently null OR explicitly provided in the patch
+        // This is safe for fixing existing records with null data
+        
+        if (patchDto.getLearnerId() != null && !patchDto.getLearnerId().isBlank()) {
+            existing.setLearnerId(patchDto.getLearnerId());
+        }
+        
+        if (patchDto.getLearner_name() != null && !patchDto.getLearner_name().isBlank()) {
+            existing.setLearner_name(patchDto.getLearner_name());
+        }
+        
+        if (patchDto.getQuiz_id() != null && !patchDto.getQuiz_id().isBlank()) {
+            existing.setQuiz_id(patchDto.getQuiz_id());
+        }
+        
+        if (patchDto.getStatus() != null) {
+            existing.setStatus(patchDto.getStatus());
+        }
+        
+        if (patchDto.getScore() != null) {
+            existing.setScore(patchDto.getScore());
+        }
+        
+        if (patchDto.getCorrectAnswers() != null) {
+            existing.setCorrectAnswers(patchDto.getCorrectAnswers());
+        }
+        
+        if (patchDto.getWrongAnswers() != null) {
+            existing.setWrongAnswers(patchDto.getWrongAnswers());
+        }
+        
+        if (patchDto.getAccuracy() != null) {
+            existing.setAccuracy(patchDto.getAccuracy());
+        }
+        
+        if (patchDto.getTimeSpentMinutes() != null) {
+            existing.setTimeSpentMinutes(patchDto.getTimeSpentMinutes());
+        }
+        
+        if (patchDto.getSubmittedAt() != null) {
+            existing.setSubmittedAt(patchDto.getSubmittedAt());
+        }
+
+        quizAttemptRepository.save(existing);
+
+        // Always sync the student result with the latest attempt data
+        if (existing.getQuiz_id() != null) {
+            autoCreateStudentResult(existing);
+        }
+        // Trigger analytics only when the attempt is completed
+        if (AttemptStatus.COMPLETED.equals(existing.getStatus())) {
+            updateAnalyticsWithAttempt(existing.getQuiz_id(), existing);
+        }
+
         QuizAttemptDto dto = new QuizAttemptDto();
         BeanUtils.copyProperties(existing, dto);
         return dto;

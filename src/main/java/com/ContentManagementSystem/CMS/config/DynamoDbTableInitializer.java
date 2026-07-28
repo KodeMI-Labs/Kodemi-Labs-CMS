@@ -34,7 +34,8 @@ public class DynamoDbTableInitializer {
             new String[]{"InstructorReview",         "review_id"},
             new String[]{"InstructorRatingSummary",  "instructor_id"},
             new String[]{"QuizAnalytics",            "analytics_id"},
-            new String[]{"QuizStudentResult",        "result_id"}
+            new String[]{"QuizStudentResult",        "result_id"},
+            new String[]{"Testimonial",              "testimonial_id"}
     );
 
     @PostConstruct

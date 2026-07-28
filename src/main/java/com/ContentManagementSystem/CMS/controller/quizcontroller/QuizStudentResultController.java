@@ -12,29 +12,23 @@ import java.util.List;
 @RequestMapping("/quiz-student-result")
 @RequiredArgsConstructor
 public class QuizStudentResultController {
-
     private final QuizStudentResultService quizStudentResultService;
-
     @PostMapping("/create")
     public String createResult(@RequestBody QuizStudentResult result) {
         return quizStudentResultService.createResult(result);
     }
-
     @PostMapping("/create-dto")
     public QuizStudentResult createResultDto(@RequestBody QuizStudentResultDto dto) {
         return quizStudentResultService.createResult(dto);
     }
-
     @GetMapping("/{result_id}")
     public QuizStudentResultDto getResultById(@PathVariable String result_id) {
         return quizStudentResultService.getResultById(result_id);
     }
-
     @GetMapping("/all")
     public List<QuizStudentResultDto> getAllResults() {
         return quizStudentResultService.getAllResults();
     }
-
     @GetMapping("/quiz/{quiz_id}")
     public List<QuizStudentResultDto> getResultsByQuiz(@PathVariable String quiz_id) {
         return quizStudentResultService.getResultsByQuizId(quiz_id);
@@ -44,7 +38,6 @@ public class QuizStudentResultController {
     public List<QuizStudentResultDto> getResultsByLearner(@PathVariable String learner_id) {
         return quizStudentResultService.getResultsByLearnerId(learner_id);
     }
-
     @PutMapping("/update/{result_id}")
     public String updateResult(@PathVariable String result_id,
                                @RequestBody QuizStudentResult result) {
