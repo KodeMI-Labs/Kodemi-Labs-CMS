@@ -34,16 +34,16 @@ aws:
   secretKey: ${AWS_SECRET_ACCESS_KEY:your_aws_secret_key_here}
   region: ${AWS_REGION:ap-south-1}
   s3:
-    bucket: ${AWS_S3_BUCKET:cms-thumbnails-732304102654}
+    bucket: ${AWS_S3_BUCKET:your_s3_bucket_name_here}
 dynamodb:
   use-local: ${DYNAMODB_USE_LOCAL:false}
   endpoint: ${DYNAMODB_ENDPOINT:http://localhost:8000}
 
 jwt:
-  secret: your_aws_secret_key_here1tE=
+  secret: your_jwt_secret_key_here
 version: 3
 agent:
-  authtoken: 3Eqe2JHsgsDOceYn9aV54G7O83Y_6YXwND7xtUptxx12XKwXg
+  authtoken: your_agent_token_here
 
 course-ms:
   url: ${COURSE_MS_URL:http://localhost:8088}

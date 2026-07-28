@@ -92,8 +92,8 @@ INFO - CourseReview GSI 'course-id-index' is present.
 ```
 
 ### Step 4: Verify Tables in AWS
-1. Go to AWS Console: https://528701450746.signin.aws.amazon.com/console
-2. Login with credentials provided
+1. Go to AWS Console: https://console.aws.amazon.com/
+2. Login with your credentials
 3. Navigate to DynamoDB
 4. Select region: **ap-south-1**
 5. Verify all 20 tables exist
@@ -424,7 +424,7 @@ services:
 - **Fallback Behavior**: Returns `true` if Course MS unreachable
 
 ### AWS Console
-- **URL**: https://528701450746.signin.aws.amazon.com/console
+- **URL**: https://console.aws.amazon.com/
 - **Region**: ap-south-1 (Mumbai)
 - **Service**: DynamoDB
 

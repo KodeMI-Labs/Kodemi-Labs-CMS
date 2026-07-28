@@ -31,7 +31,7 @@ bash test-aws-dynamodb.sh
 
 ## 🌐 AWS Console
 
-- **URL**: https://528701450746.signin.aws.amazon.com/console
+- **URL**: https://console.aws.amazon.com/
 - **Service**: DynamoDB
 - **Region**: ap-south-1 (ap-south-1)
 
