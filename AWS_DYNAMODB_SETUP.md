@@ -151,7 +151,7 @@ curl -X GET http://localhost:8087/courses/{courseId}/rating-summary \
 
 ### ✓ Check DynamoDB Tables in AWS Console
 1. Go to: https://console.aws.amazon.com/dynamodbv2/
-2. Login with credentials provided
+2. Login with your credentials
 3. Select region: **ap-south-1**
 4. Verify all 20 tables exist
 5. For CourseReview table:
