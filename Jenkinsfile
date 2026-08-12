@@ -1,12 +1,11 @@
 pipeline {
     agent any
 
-    tools {
-        jdk 'JDK17'
-        maven 'Maven3'
-    }
-
     environment {
+        JAVA_HOME = '/opt/java/openjdk'
+        MAVEN_HOME = '/usr/share/maven'
+        PATH = "/opt/java/openjdk/bin:/usr/share/maven/bin:/usr/bin:/bin:/usr/local/bin"
+
         SONARQUBE = 'SonarQube'
         DOCKER_IMAGE = 'kodemi-cms'
         DOCKER_TAG = "${BUILD_NUMBER}"
@@ -22,14 +21,27 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                bat 'mvn clean verify'
+                sh '''
+                    echo "===== JAVA VERSION ====="
+                    java -version
+
+                    echo "===== MAVEN VERSION ====="
+                    mvn -version
+
+                    echo "===== BUILD & TEST ====="
+                    mvn clean verify
+                '''
             }
         }
 
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv("${SONARQUBE}") {
-                    bat 'mvn sonar:sonar'
+                    sh '''
+                        echo "===== SONARQUBE ANALYSIS ====="
+
+                        mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+                    '''
                 }
             }
         }
@@ -44,19 +56,28 @@ pipeline {
 
         stage('Package') {
             steps {
-                bat 'mvn package -DskipTests'
+                sh '''
+                    echo "===== PACKAGE ====="
+                    mvn package -DskipTests
+                '''
             }
         }
 
         stage('Docker Build') {
             steps {
-                bat "docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} ."
+                sh '''
+                    echo "===== DOCKER BUILD ====="
+                    docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
+                '''
             }
         }
 
         stage('Docker Tag Latest') {
             steps {
-                bat "docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest"
+                sh '''
+                    echo "===== DOCKER TAG ====="
+                    docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest
+                '''
             }
         }
     }
@@ -71,8 +92,10 @@ pipeline {
         }
 
         always {
-            junit allowEmptyResults: true,
-                  testResults: '**/target/surefire-reports/*.xml'
+            junit(
+                allowEmptyResults: true,
+                testResults: '**/target/surefire-reports/*.xml'
+            )
         }
     }
 }
