@@ -1,10 +1,12 @@
 pipeline {
+
     agent any
 
     environment {
-        JAVA_HOME = '/opt/java/openjdk'
-        MAVEN_HOME = '/usr/share/maven'
-        PATH = "/opt/java/openjdk/bin:/usr/share/maven/bin:/usr/bin:/bin:/usr/local/bin"
+        JAVA_HOME = 'C:\\Program Files\\Java\\jdk-17'
+        MAVEN_HOME = 'C:\\ProgramData\\chocolatey\\lib\\maven\\apache-maven-3.9.16'
+
+        PATH = "${JAVA_HOME}\\bin;${MAVEN_HOME}\\bin;C:\\Windows\\System32;C:\\Windows"
 
         SONARQUBE = 'SonarQube'
         DOCKER_IMAGE = 'kodemi-cms'
@@ -21,14 +23,14 @@ pipeline {
 
         stage('Build & Test') {
             steps {
-                sh '''
-                    echo "===== JAVA VERSION ====="
+                bat '''
+                    echo ===== JAVA VERSION =====
                     java -version
 
-                    echo "===== MAVEN VERSION ====="
+                    echo ===== MAVEN VERSION =====
                     mvn -version
 
-                    echo "===== BUILD & TEST ====="
+                    echo ===== BUILD & TEST =====
                     mvn clean verify
                 '''
             }
@@ -37,8 +39,8 @@ pipeline {
         stage('SonarQube Analysis') {
             steps {
                 withSonarQubeEnv("${SONARQUBE}") {
-                    sh '''
-                        echo "===== SONARQUBE ANALYSIS ====="
+                    bat '''
+                        echo ===== SONARQUBE ANALYSIS =====
 
                         mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
                     '''
@@ -56,8 +58,8 @@ pipeline {
 
         stage('Package') {
             steps {
-                sh '''
-                    echo "===== PACKAGE ====="
+                bat '''
+                    echo ===== PACKAGE =====
                     mvn package -DskipTests
                 '''
             }
@@ -65,24 +67,25 @@ pipeline {
 
         stage('Docker Build') {
             steps {
-                sh '''
-                    echo "===== DOCKER BUILD ====="
-                    docker build -t ${DOCKER_IMAGE}:${DOCKER_TAG} .
+                bat '''
+                    echo ===== DOCKER BUILD =====
+                    docker build -t %DOCKER_IMAGE%:%DOCKER_TAG% .
                 '''
             }
         }
 
         stage('Docker Tag Latest') {
             steps {
-                sh '''
-                    echo "===== DOCKER TAG ====="
-                    docker tag ${DOCKER_IMAGE}:${DOCKER_TAG} ${DOCKER_IMAGE}:latest
+                bat '''
+                    echo ===== DOCKER TAG =====
+                    docker tag %DOCKER_IMAGE%:%DOCKER_TAG% %DOCKER_IMAGE%:latest
                 '''
             }
         }
     }
 
     post {
+
         success {
             echo 'CMS CI/CD pipeline completed successfully.'
         }
