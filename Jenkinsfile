@@ -24,7 +24,7 @@ pipeline {
             }
         }
 
-        stage('Build & Test') {
+        stage('Build & Test with Coverage') {
             steps {
                 bat '''
                     echo ===== JAVA VERSION =====
@@ -33,8 +33,16 @@ pipeline {
                     echo ===== MAVEN VERSION =====
                     mvn -version
 
-                    echo ===== BUILD & TEST =====
-                    mvn clean verify
+                    echo ===== BUILD, TEST & COVERAGE =====
+                    mvn clean verify org.jacoco:jacoco-maven-plugin:report
+
+                    echo ===== JACOCO COVERAGE REPORT =====
+                    if exist target\\site\\jacoco\\jacoco.xml (
+                        echo JaCoCo XML coverage report generated successfully.
+                    ) else (
+                        echo ERROR: JaCoCo XML coverage report was not generated.
+                        exit /b 1
+                    )
                 '''
             }
         }
@@ -46,10 +54,12 @@ pipeline {
                         echo ===== SONARQUBE ANALYSIS =====
                         echo Project Key: %SONAR_PROJECT_KEY%
                         echo Project Name: %SONAR_PROJECT_NAME%
+                        echo Coverage Report: target\\site\\jacoco\\jacoco.xml
 
                         mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar ^
                             -Dsonar.projectKey=%SONAR_PROJECT_KEY% ^
-                            -Dsonar.projectName=%SONAR_PROJECT_NAME%
+                            -Dsonar.projectName=%SONAR_PROJECT_NAME% ^
+                            -Dsonar.coverage.jacoco.xmlReportPaths=target\\site\\jacoco\\jacoco.xml
                     '''
                 }
             }
@@ -67,7 +77,7 @@ pipeline {
             steps {
                 bat '''
                     echo ===== PACKAGE =====
-                    mvn package
+                    mvn package -DskipTests
                 '''
             }
         }
@@ -105,6 +115,11 @@ pipeline {
             junit(
                 allowEmptyResults: true,
                 testResults: '**/target/surefire-reports/*.xml'
+            )
+
+            archiveArtifacts(
+                artifacts: 'target/site/jacoco/**',
+                allowEmptyArchive: true
             )
         }
     }
