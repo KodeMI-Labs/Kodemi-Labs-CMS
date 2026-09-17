@@ -8,7 +8,7 @@ pipeline {
 
         PATH = "${JAVA_HOME}\\bin;${MAVEN_HOME}\\bin;C:\\Windows\\System32;C:\\Windows"
 
-        SONARQUBE = 'SonarQube'
+        SONARQUBE = 'SonarQube2'
         DOCKER_IMAGE = 'kodemi-cms'
         DOCKER_TAG = "${BUILD_NUMBER}"
     }
@@ -60,7 +60,7 @@ pipeline {
             steps {
                 bat '''
                     echo ===== PACKAGE =====
-                    mvn package -DskipTests
+                    mvn package
                 '''
             }
         }
