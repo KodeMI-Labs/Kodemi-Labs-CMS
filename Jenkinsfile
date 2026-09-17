@@ -9,6 +9,9 @@ pipeline {
         PATH = "${JAVA_HOME}\\bin;${MAVEN_HOME}\\bin;C:\\Windows\\System32;C:\\Windows"
 
         SONARQUBE = 'SonarQube2'
+        SONAR_PROJECT_KEY = 'CMS-Service'
+        SONAR_PROJECT_NAME = 'CMS-Service'
+
         DOCKER_IMAGE = 'kodemi-cms'
         DOCKER_TAG = "${BUILD_NUMBER}"
     }
@@ -41,8 +44,12 @@ pipeline {
                 withSonarQubeEnv("${SONARQUBE}") {
                     bat '''
                         echo ===== SONARQUBE ANALYSIS =====
+                        echo Project Key: %SONAR_PROJECT_KEY%
+                        echo Project Name: %SONAR_PROJECT_NAME%
 
-                        mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar
+                        mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar ^
+                            -Dsonar.projectKey=%SONAR_PROJECT_KEY% ^
+                            -Dsonar.projectName=%SONAR_PROJECT_NAME%
                     '''
                 }
             }
@@ -87,11 +94,11 @@ pipeline {
     post {
 
         success {
-            echo 'CMS CI/CD pipeline completed successfully.'
+            echo 'CMS-Service CI/CD pipeline completed successfully.'
         }
 
         failure {
-            echo 'CMS CI/CD pipeline failed. Check the Jenkins console logs.'
+            echo 'CMS-Service CI/CD pipeline failed. Check the Jenkins console logs.'
         }
 
         always {
