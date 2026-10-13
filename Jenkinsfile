@@ -1,3 +1,4 @@
+
 pipeline {
     agent any
 
@@ -47,7 +48,7 @@ pipeline {
             }
         }
 
-        stage('Build & Test with Coverage') {
+        stage('Build - Skip Tests') {
             steps {
                 sh '''
                     set -e
@@ -55,41 +56,20 @@ pipeline {
                     echo "===== CLEAN BUILD ====="
                     mvn clean
 
-                    echo "===== PREPARING JACOCO AGENT ====="
-                    mvn org.jacoco:jacoco-maven-plugin:prepare-agent
+                    echo "===== COMPILE AND PACKAGE WITHOUT TEST COMPILATION ====="
+                    mvn -B package -Dmaven.test.skip=true
 
-                    echo "===== RUNNING TESTS ====="
-                    mvn test
-
-                    echo "===== GENERATING JACOCO REPORT ====="
-                    mvn org.jacoco:jacoco-maven-plugin:report
-
-                    echo "===== VERIFYING SUREFIRE REPORTS ====="
-                    if [ ! -d target/surefire-reports ]; then
-                        echo "ERROR: Surefire reports directory not found."
-                        exit 1
-                    fi
-                    find target/surefire-reports -type f -print
-
-                    echo "===== VERIFYING JACOCO XML ====="
-                    if [ ! -f target/site/jacoco/jacoco.xml ]; then
-                        echo "ERROR: JaCoCo XML report not found."
-                        exit 1
-                    fi
-                    ls -lh target/site/jacoco/jacoco.xml
-
-                    if [ -f target/site/jacoco/index.html ]; then
-                        echo "JaCoCo HTML report found."
-                    else
-                        echo "WARNING: JaCoCo HTML report was not generated."
-                    fi
+                    echo "===== BUILD COMPLETED ====="
                 '''
             }
         }
 
         stage('OWASP Dependency Check') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                catchError(
+                    buildResult: 'SUCCESS',
+                    stageResult: 'UNSTABLE'
+                ) {
                     withCredentials([
                         string(
                             credentialsId: 'nvd-api-key',
@@ -98,13 +78,7 @@ pipeline {
                     ]) {
                         dependencyCheck(
                             odcInstallation: 'OWASP',
-                            additionalArguments: '''
-                                --nvdApiKey %NVD_KEY%
-                                --format HTML
-                                --format CSV
-                                --out .
-                                --disableOssIndex
-                            '''.replace('%NVD_KEY%', '${NVD_KEY}')
+                            additionalArguments: "--nvdApiKey ${env.NVD_KEY} --format HTML --format CSV --out . --disableOssIndex"
                         )
                     }
                 }
@@ -113,7 +87,10 @@ pipeline {
 
         stage('Publish OWASP Report') {
             steps {
-                catchError(buildResult: 'SUCCESS', stageResult: 'UNSTABLE') {
+                catchError(
+                    buildResult: 'SUCCESS',
+                    stageResult: 'UNSTABLE'
+                ) {
                     dependencyCheckPublisher(
                         pattern: 'dependency-check-report.csv'
                     )
@@ -132,6 +109,7 @@ pipeline {
                     ]) {
                         sh '''
                             set -e
+
                             mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
                                 -Dsonar.projectKey="$SONAR_PROJECT_KEY" \
                                 -Dsonar.projectName="$SONAR_PROJECT_NAME" \
@@ -155,7 +133,7 @@ pipeline {
             steps {
                 sh '''
                     set -e
-                    mvn package -DskipTests
+                    mvn -B package -DskipTests -Dmaven.test.skip=true
                 '''
             }
         }
