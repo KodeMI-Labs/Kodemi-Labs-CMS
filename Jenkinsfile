@@ -1,4 +1,3 @@
-
 pipeline {
     agent any
 
@@ -54,12 +53,12 @@ pipeline {
                     set -e
 
                     echo "===== CLEAN BUILD ====="
-                    mvn clean
+                    mvn -B clean
 
-                    echo "===== COMPILE AND PACKAGE WITHOUT TEST COMPILATION ====="
+                    echo "===== PACKAGE WITHOUT TEST COMPILATION ====="
                     mvn -B package -Dmaven.test.skip=true
 
-                    echo "===== BUILD COMPLETED ====="
+                    echo "===== APPLICATION BUILD COMPLETED ====="
                 '''
             }
         }
@@ -70,30 +69,31 @@ pipeline {
                     buildResult: 'SUCCESS',
                     stageResult: 'UNSTABLE'
                 ) {
-                    withCredentials([
-                        string(
-                            credentialsId: 'nvd-api-key',
-                            variable: 'NVD_KEY'
-                        )
-                    ]) {
-                        dependencyCheck(
-                            odcInstallation: 'OWASP',
-                            additionalArguments: "--nvdApiKey ${env.NVD_KEY} --format HTML --format CSV --out . --disableOssIndex"
-                        )
-                    }
+                    dependencyCheck(
+                        odcInstallation: 'OWASP',
+                        nvdCredentialsId: 'nvd-api-key',
+                        additionalArguments: '--format HTML --format CSV --format XML --out . --disableOssIndex'
+                    )
                 }
             }
         }
 
         stage('Publish OWASP Report') {
             steps {
-                catchError(
-                    buildResult: 'SUCCESS',
-                    stageResult: 'UNSTABLE'
-                ) {
-                    dependencyCheckPublisher(
-                        pattern: 'dependency-check-report.csv'
+                script {
+                    def reportExists = fileExists(
+                        'dependency-check-report.xml'
                     )
+
+                    if (reportExists) {
+                        dependencyCheckPublisher(
+                            pattern: 'dependency-check-report.xml',
+                            skipNoReportFiles: true
+                        )
+                    } else {
+                        echo 'WARNING: OWASP report is missing. The scan may have failed.'
+                        currentBuild.result = 'UNSTABLE'
+                    }
                 }
             }
         }
@@ -110,10 +110,11 @@ pipeline {
                         sh '''
                             set -e
 
+                            echo "===== SONARQUBE ANALYSIS ====="
+
                             mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
                                 -Dsonar.projectKey="$SONAR_PROJECT_KEY" \
                                 -Dsonar.projectName="$SONAR_PROJECT_NAME" \
-                                -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
                                 -Dsonar.token="$SONAR_TOKEN"
                         '''
                     }
@@ -133,7 +134,7 @@ pipeline {
             steps {
                 sh '''
                     set -e
-                    mvn -B package -DskipTests -Dmaven.test.skip=true
+                    mvn -B package -Dmaven.test.skip=true
                 '''
             }
         }
@@ -176,7 +177,7 @@ pipeline {
         }
 
         unstable {
-            echo 'Pipeline is unstable. Check the OWASP Dependency Check results.'
+            echo 'Pipeline is unstable. Check OWASP scan results and reports.'
         }
 
         failure {
