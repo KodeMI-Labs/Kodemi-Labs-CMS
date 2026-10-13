@@ -25,99 +25,64 @@ pipeline {
 
         stage('Checkout') {
             steps {
-                echo '========================================'
                 echo 'CHECKOUT'
-                echo '========================================'
-
                 checkout scm
             }
         }
 
         stage('Environment Check') {
             steps {
-                bat '''
-                    echo ========================================
-                    echo JAVA VERSION
-                    echo ========================================
+                sh '''
+                    set -e
+                    echo "===== JAVA VERSION ====="
                     java -version
 
-                    echo ========================================
-                    echo MAVEN VERSION
-                    echo ========================================
+                    echo "===== MAVEN VERSION ====="
                     mvn -version
 
-                    echo ========================================
-                    echo WORKSPACE
-                    echo ========================================
-                    echo %WORKSPACE%
+                    echo "===== WORKSPACE ====="
+                    pwd
+                    ls -la
                 '''
             }
         }
 
         stage('Build & Test with Coverage') {
             steps {
-                bat '''
-                    echo ========================================
-                    echo CLEAN BUILD
-                    echo ========================================
+                sh '''
+                    set -e
 
+                    echo "===== CLEAN BUILD ====="
                     mvn clean
-                    if errorlevel 1 exit /b 1
 
-                    echo ========================================
-                    echo PREPARING JACOCO AGENT
-                    echo ========================================
-
+                    echo "===== PREPARING JACOCO AGENT ====="
                     mvn org.jacoco:jacoco-maven-plugin:prepare-agent
-                    if errorlevel 1 exit /b 1
 
-                    echo ========================================
-                    echo RUNNING TESTS
-                    echo ========================================
-
+                    echo "===== RUNNING TESTS ====="
                     mvn test
-                    if errorlevel 1 exit /b 1
 
-                    echo ========================================
-                    echo GENERATING JACOCO REPORT
-                    echo ========================================
-
+                    echo "===== GENERATING JACOCO REPORT ====="
                     mvn org.jacoco:jacoco-maven-plugin:report
-                    if errorlevel 1 exit /b 1
 
-                    echo ========================================
-                    echo VERIFYING SUREFIRE REPORTS
-                    echo ========================================
+                    echo "===== VERIFYING SUREFIRE REPORTS ====="
+                    if [ ! -d target/surefire-reports ]; then
+                        echo "ERROR: Surefire reports directory not found."
+                        exit 1
+                    fi
+                    find target/surefire-reports -type f -print
 
-                    if exist "target\\surefire-reports" (
-                        echo Surefire reports directory FOUND.
-                        dir /s /b target\\surefire-reports
-                    ) else (
-                        echo ERROR: Surefire reports directory NOT FOUND.
-                        exit /b 1
-                    )
+                    echo "===== VERIFYING JACOCO XML ====="
+                    if [ ! -f target/site/jacoco/jacoco.xml ]; then
+                        echo "ERROR: JaCoCo XML report not found."
+                        exit 1
+                    fi
+                    ls -lh target/site/jacoco/jacoco.xml
 
-                    echo ========================================
-                    echo VERIFYING JACOCO XML REPORT
-                    echo ========================================
-
-                    if exist "target\\site\\jacoco\\jacoco.xml" (
-                        echo JaCoCo XML report FOUND.
-                        dir "target\\site\\jacoco\\jacoco.xml"
-                    ) else (
-                        echo ERROR: JaCoCo XML report NOT FOUND.
-                        exit /b 1
-                    )
-
-                    echo ========================================
-                    echo VERIFYING JACOCO HTML REPORT
-                    echo ========================================
-
-                    if exist "target\\site\\jacoco\\index.html" (
-                        echo JaCoCo HTML report FOUND.
-                    ) else (
-                        echo WARNING: JaCoCo HTML report was not generated.
-                    )
+                    if [ -f target/site/jacoco/index.html ]; then
+                        echo "JaCoCo HTML report found."
+                    else
+                        echo "WARNING: JaCoCo HTML report was not generated."
+                    fi
                 '''
             }
         }
@@ -131,19 +96,15 @@ pipeline {
                             variable: 'NVD_KEY'
                         )
                     ]) {
-                        echo '========================================'
-                        echo 'OWASP DEPENDENCY CHECK'
-                        echo '========================================'
-
                         dependencyCheck(
                             odcInstallation: 'OWASP',
-                            additionalArguments: """
-                                --nvdApiKey ${NVD_KEY}
+                            additionalArguments: '''
+                                --nvdApiKey %NVD_KEY%
                                 --format HTML
                                 --format CSV
                                 --out .
                                 --disableOssIndex
-                            """
+                            '''.replace('%NVD_KEY%', '${NVD_KEY}')
                         )
                     }
                 }
@@ -169,24 +130,13 @@ pipeline {
                             variable: 'SONAR_TOKEN'
                         )
                     ]) {
-                        bat '''
-                            echo ========================================
-                            echo SONARQUBE ANALYSIS
-                            echo ========================================
-
-                            echo Project Key: %SONAR_PROJECT_KEY%
-                            echo Project Name: %SONAR_PROJECT_NAME%
-
-                            mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar ^
-                                -Dsonar.projectKey=%SONAR_PROJECT_KEY% ^
-                                -Dsonar.projectName=%SONAR_PROJECT_NAME% ^
-                                -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml ^
-                                -Dsonar.token=%SONAR_TOKEN%
-
-                            if errorlevel 1 (
-                                echo ERROR: SonarQube analysis failed.
-                                exit /b 1
-                            )
+                        sh '''
+                            set -e
+                            mvn -B org.sonarsource.scanner.maven:sonar-maven-plugin:sonar \
+                                -Dsonar.projectKey="$SONAR_PROJECT_KEY" \
+                                -Dsonar.projectName="$SONAR_PROJECT_NAME" \
+                                -Dsonar.coverage.jacoco.xmlReportPaths=target/site/jacoco/jacoco.xml \
+                                -Dsonar.token="$SONAR_TOKEN"
                         '''
                     }
                 }
@@ -195,10 +145,6 @@ pipeline {
 
         stage('Quality Gate') {
             steps {
-                echo '========================================'
-                echo 'WAITING FOR SONARQUBE QUALITY GATE'
-                echo '========================================'
-
                 timeout(time: 5, unit: 'MINUTES') {
                     waitForQualityGate abortPipeline: true
                 }
@@ -207,51 +153,27 @@ pipeline {
 
         stage('Package') {
             steps {
-                bat '''
-                    echo ========================================
-                    echo PACKAGE
-                    echo ========================================
-
+                sh '''
+                    set -e
                     mvn package -DskipTests
-
-                    if errorlevel 1 (
-                        echo ERROR: Maven package failed.
-                        exit /b 1
-                    )
                 '''
             }
         }
 
         stage('Docker Build') {
             steps {
-                bat '''
-                    echo ========================================
-                    echo DOCKER BUILD
-                    echo ========================================
-
-                    docker build -t %DOCKER_IMAGE%:%DOCKER_TAG% .
-
-                    if errorlevel 1 (
-                        echo ERROR: Docker image build failed.
-                        exit /b 1
-                    )
+                sh '''
+                    set -e
+                    docker build -t "$DOCKER_IMAGE:$DOCKER_TAG" .
                 '''
             }
         }
 
         stage('Docker Tag Latest') {
             steps {
-                bat '''
-                    echo ========================================
-                    echo DOCKER TAG
-                    echo ========================================
-
-                    docker tag %DOCKER_IMAGE%:%DOCKER_TAG% %DOCKER_IMAGE%:latest
-
-                    if errorlevel 1 (
-                        echo ERROR: Docker tag failed.
-                        exit /b 1
-                    )
+                sh '''
+                    set -e
+                    docker tag "$DOCKER_IMAGE:$DOCKER_TAG" "$DOCKER_IMAGE:latest"
                 '''
             }
         }
@@ -259,10 +181,6 @@ pipeline {
 
     post {
         always {
-            echo '========================================'
-            echo 'PUBLISHING TEST AND COVERAGE REPORTS'
-            echo '========================================'
-
             junit(
                 allowEmptyResults: true,
                 testResults: '**/target/surefire-reports/*.xml'
@@ -276,20 +194,15 @@ pipeline {
         }
 
         success {
-            echo '========================================'
-            echo 'CMS-SERVICE PIPELINE COMPLETED SUCCESSFULLY'
-            echo '========================================'
+            echo 'CMS-SERVICE pipeline completed successfully.'
         }
 
         unstable {
-            echo 'Pipeline completed with an unstable stage. Check the OWASP Dependency Check results.'
+            echo 'Pipeline is unstable. Check the OWASP Dependency Check results.'
         }
 
         failure {
-            echo '========================================'
-            echo 'CMS-SERVICE PIPELINE FAILED'
-            echo 'Check Jenkins console logs for the exact failure.'
-            echo '========================================'
+            echo 'CMS-SERVICE pipeline failed. Check the Jenkins console logs.'
         }
     }
 }
